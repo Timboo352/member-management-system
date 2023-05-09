@@ -3,4 +3,9 @@
 {% block title %}{{ firstname }} {{ lastname }}{% endblock %}
 
 {% block body %}
+
+    <div class="container">
+        <div {{ react_component('TestComponent', { 'nickname': nickname }) }}></div>
+    </div>
+
 {% endblock %}
