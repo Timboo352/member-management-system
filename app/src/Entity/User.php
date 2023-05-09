@@ -22,6 +22,9 @@ class User implements UserInterface
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $role = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -56,9 +59,21 @@ class User implements UserInterface
         return $this->member->getEmail();
     }
 
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(?string $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
     public function getRoles(): array
     {
-        // TODO: Implement getRoles() method.
+        return explode(", ", $this->getRole());
     }
 
     public function eraseCredentials()
@@ -70,4 +85,6 @@ class User implements UserInterface
     {
         // TODO: Implement getUserIdentifier() method.
     }
+
+
 }
