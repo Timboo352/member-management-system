@@ -46,16 +46,13 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-//        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
-//            return new RedirectResponse($targetPath);
-//        }
-        if (in_array('ADMIN', $token->getRoleNames())) {
-            return new RedirectResponse($this->urlGenerator->generate('admin_panel'));
-        } elseif(in_array('USER', $token->getRoleNames())) {
+        if (in_array('ROLE_ADMIN', $token->getRoleNames())) {
+            return new RedirectResponse($this->urlGenerator->generate('app_admin_panel'));
+        } elseif(in_array('ROLE_USER', $token->getRoleNames())) {
             $user = $token->getUser();
-            return new RedirectResponse($this->urlGenerator->generate('users') . '/' . $user->getMember()->getId());
+            return new RedirectResponse($this->urlGenerator->generate('app_user') . '/' . $user->getMember()->getId());
         }
-        return new RedirectResponse($this->urlGenerator->generate('app_login'));
+        return new RedirectResponse($this->urlGenerator->generate(self::LOGIN_ROUTE));
     }
 
     protected function getLoginUrl(Request $request): string
