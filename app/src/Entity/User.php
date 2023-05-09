@@ -4,11 +4,12 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: '`user`')]
-class User implements UserInterface
+#[ORM\Table(name: '`auth_user`')]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -83,8 +84,22 @@ class User implements UserInterface
 
     public function getUserIdentifier(): string
     {
+        return $this->getId();
         // TODO: Implement getUserIdentifier() method.
     }
 
+    public function hashPassword(PasswordAuthenticatedUserInterface $user, #[\SensitiveParameter] string $plainPassword): string
+    {
+        // TODO: Implement hashPassword() method.
+    }
 
+    public function isPasswordValid(PasswordAuthenticatedUserInterface $user, #[\SensitiveParameter] string $plainPassword): bool
+    {
+        // TODO: Implement isPasswordValid() method.
+    }
+
+    public function needsRehash(PasswordAuthenticatedUserInterface $user): bool
+    {
+        // TODO: Implement needsRehash() method.
+    }
 }
