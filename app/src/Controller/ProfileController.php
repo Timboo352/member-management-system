@@ -6,9 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class UserController extends AbstractController
+class ProfileController extends AbstractController
 {
-    #[Route('/user', name: 'app_user')]
+    #[Route('/profile', name: 'app_profile')]
     public function index(): Response
     {
         $member = $this->getUser()->getMember();

@@ -1,0 +1,25 @@
+.inline-input {
+    border: 0;
+    background: transparent;
+    padding: 0;
+    color: #FFF;
+    font-size: inherit;
+    font-weight: inherit;
+    outline: none;
+    margin-bottom: 2px;
+    &:focus {
+        border-bottom: 2px solid #FFF;
+        margin-bottom: 0;
+    }
+    &__wrapper {
+        display: inline;
+    }
+    &__icon {
+        cursor: pointer;
+        transition: 100ms ease;
+        font-size: 1rem/16 * 25;
+        &:hover {
+            opacity: 0.75;
+        }
+    }
+}

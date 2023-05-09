@@ -3,9 +3,9 @@
 {% block title %}{{ firstname }} {{ lastname }}{% endblock %}
 
 {% block body %}
-
-    <div class="container">
-        <div {{ react_component('TestComponent', { 'nickname': nickname }) }}></div>
+    <div class="content-wrapper">
+        <h1>
+            Hallo, <span {{ react_component('InlineInput', { 'fieldTitle': 'Vorname', 'fieldName':  'firstname', 'fieldValue': firstname}) }}>Vorname</span> <span {{ react_component('InlineInput', { 'fieldTitle': 'Nachname', 'fieldName':  'lastname', 'fieldValue': lastname}) }}>Nachname</span>
+        </h1>
     </div>
-
 {% endblock %}
