@@ -186,14 +186,20 @@ h1 {
 }
 .inline-input__wrapper {
   display: inline;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .inline-input__icon {
-  cursor: pointer;
   transition: 100ms ease;
-  font-size: 1.5625rem;
-}
-.inline-input__icon:hover {
-  opacity: 0.75;
+  font-size: 1.1875rem;
+  position: relative;
+  bottom: 3px;
+  margin-left: 5px;
+  /*
+  &:hover {
+      opacity: 0.75;
+  }
+  */
 }
 
 /*# sourceMappingURL=app.css.map */
