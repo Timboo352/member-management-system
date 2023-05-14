@@ -32,6 +32,18 @@ class ProfileController extends AbstractController
             if(isset($F['nickname'])) {
                 $member->setNickname($F['nickname']);
             }
+            if(isset($F['plz'])) {
+                $member->setPlz($F['plz']);
+            }
+            if(isset($F['city'])) {
+                $member->setCity($F['city']);
+            }
+            if(isset($F['address'])) {
+                $member->setAddress($F['address']);
+            }
+            if(isset($F['phone'])) {
+                $member->setPhone($F['phone']);
+            }
             $entityManager->flush();
         }
 
@@ -40,6 +52,10 @@ class ProfileController extends AbstractController
             'nickname' => $member->getNickname(),
             'lastname' => $member->getLastname(),
             'email' => $member->getEmail(),
+            'plz' => $member->getPlz(),
+            'city' => $member->getCity(),
+            'address' => $member->getAddress(),
+            'phone' => $member->getPhone(),
             'status' => $member->getStatus(),
         ]);
     }
