@@ -22,9 +22,16 @@
                 </div>
             </div>
             <div class="profile__footer">
-                <button class="save-button" type="submit">
-                    <i class="fa-solid fa-floppy-disk"></i>
-                </button>
+                <div class="profile__footer__left">
+                    <button class="ra-button ra-button--icon ra-button--blurple" type="submit">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                    </button>
+                </div>
+                <div class="profile__footer__right">
+                    <a href="{{ path('app_logout') }}" class="ra-button ra-button--icon ra-button--red">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                </div>
             </div>
         </form>
     </div>
