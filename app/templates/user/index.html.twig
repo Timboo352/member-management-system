@@ -9,13 +9,21 @@
                 <h1 class="profile__head__title">
                     Hallo, <span {{ react_component('InlineInput', { 'fieldTitle': 'Vorname', 'fieldName':  'user[firstname]', 'fieldValue': firstname}) }}>Vorname</span> <span {{ react_component('InlineInput', { 'fieldTitle': 'Nachname', 'fieldName':  'user[lastname]', 'fieldValue': lastname}) }}>Nachname</span>
                 </h1>
-                <div class="profile__head__status" {{ react_component('MemberStatus', { 'title': status.getTitle, 'color': status.getColor }) }}>
-
+                <div class="profile__head__status" {{ react_component('MemberStatus', { 'title': status.getTitle, 'color': status.getColor }) }}></div>
+            </div>
+            <div class="profile__body">
+                <div class="row">
+                    <div class="col-12 col-lg-6 mb-3" {{ react_component('FormInput', { 'fieldTitle': 'E-Mail', 'fieldName':  'user[email]', 'fieldValue': email}) }}></div>
+                    <div class="col-12 col-lg-6 mb-3" {{ react_component('FormInput', { 'fieldTitle': 'Nickname', 'fieldName':  'user[nickname]', 'fieldValue': nickname}) }}></div>
+                    <div class="col-2 col-lg-4 mb-3" {{ react_component('FormInput', { 'fieldTitle': 'PLZ', 'fieldName':  'user[zip]', 'fieldValue': zip}) }}></div>
+                    <div class="col-4 col-lg-8 mb-3" {{ react_component('FormInput', { 'fieldTitle': 'Ort', 'fieldName':  'user[city]', 'fieldValue': city}) }}></div>
                 </div>
             </div>
-            <button class="save-button" type="submit">
-                <i class="fa-solid fa-floppy-disk"></i>
-            </button>
+            <div class="profile__footer">
+                <button class="save-button" type="submit">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                </button>
+            </div>
         </form>
     </div>
 {% endblock %}

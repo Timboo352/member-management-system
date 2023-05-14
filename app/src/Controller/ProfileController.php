@@ -13,7 +13,7 @@ class ProfileController extends AbstractController
     public function index(EntityManagerInterface $entityManager): Response
     {
         $member = $this->getUser()->getMember();
-        if(isset($_POST['user'])){
+        if(isset($_POST['user'])) {
             $F = [];
             foreach ($_POST['user'] as $k => $v) {
                 if(strlen($v)) {
@@ -26,13 +26,20 @@ class ProfileController extends AbstractController
             if(isset($F['lastname'])) {
                 $member->setLastname($F['lastname']);
             }
+            if(isset($F['email'])) {
+                $member->setEmail($F['email']);
+            }
+            if(isset($F['nickname'])) {
+                $member->setNickname($F['nickname']);
+            }
             $entityManager->flush();
-
         }
+
         return $this->render('user/index.html.twig', [
             'firstname' => $member->getFirstname(),
             'nickname' => $member->getNickname(),
             'lastname' => $member->getLastname(),
+            'email' => $member->getEmail(),
             'status' => $member->getStatus(),
         ]);
     }

@@ -29,6 +29,15 @@ class Member
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $plz = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $city = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $phone = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -107,5 +116,41 @@ class Member
     public function getUserIdentifier(): string
     {
         // TODO: Implement getUserIdentifier() method.
+    }
+
+    public function getPlz(): ?string
+    {
+        return $this->plz;
+    }
+
+    public function setPlz(?string $plz): self
+    {
+        $this->plz = $plz;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(?string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
     }
 }
