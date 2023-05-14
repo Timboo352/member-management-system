@@ -1,4 +1,54 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap");
+.bg-blurple {
+  background-color: #5865F2;
+}
+.bg-green {
+  background-color: #57F287;
+}
+.bg-yellow {
+  background-color: #FEE75C;
+}
+.bg-fuchsia {
+  background-color: #EB459E;
+}
+.bg-red {
+  background-color: #ED4245;
+}
+.bg-white {
+  background-color: #FFF;
+}
+.bg-gray {
+  background-color: #23272A;
+}
+.bg-black {
+  background-color: #111214;
+}
+
+.text-blurple {
+  color: #5865F2;
+}
+.text-green {
+  color: #57F287;
+}
+.text-yellow {
+  color: #FEE75C;
+}
+.text-fuchsia {
+  color: #EB459E;
+}
+.text-red {
+  color: #ED4245;
+}
+.text-white {
+  color: #FFF;
+}
+.text-gray {
+  background-color: #23272A;
+}
+.text-black {
+  background-color: #111214;
+}
+
 button, hr, input {
   overflow: visible;
 }
@@ -145,7 +195,7 @@ body {
   font-family: "Inter", sans-serif;
   font-weight: 400;
   background-color: #23272A;
-  color: #FFFFFF;
+  color: #FFF;
   position: revert;
   padding: 0;
   margin: 0;
@@ -155,11 +205,11 @@ h1 {
   font-weight: 800;
   font-size: 2rem;
   padding: 0;
-  margin-top: 0;
+  margin: 0;
 }
 
 .content-wrapper {
-  background-color: #141619;
+  background-color: #111214;
   width: calc(100% - 30px);
   max-width: 900px;
   position: absolute;
@@ -168,6 +218,21 @@ h1 {
   transform: translateX(-50%) translateY(-50%);
   padding: 50px 50px;
   border-radius: 30px;
+}
+
+.save-button {
+  height: 54px;
+  width: 54px;
+  border: none;
+  border-radius: 27px;
+  background-color: #5865F2;
+  color: #FFF;
+  font-size: 1.375rem;
+  cursor: pointer;
+  transition: 100ms ease;
+}
+.save-button:hover {
+  opacity: 0.9;
 }
 
 .inline-input {
@@ -200,6 +265,32 @@ h1 {
       opacity: 0.75;
   }
   */
+}
+
+.member-status {
+  padding: 11px 13px;
+  background-color: #23272A;
+  border: 2px solid;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+.member-status__color {
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.profile__head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+.profile__head__status {
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 /*# sourceMappingURL=app.css.map */

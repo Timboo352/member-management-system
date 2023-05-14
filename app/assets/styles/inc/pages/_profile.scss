@@ -1,0 +1,12 @@
+.profile {
+    &__head {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+        &__status {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+    }
+}

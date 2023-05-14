@@ -1,0 +1,16 @@
+.member-status {
+    padding: 11px 13px;
+    background-color: $gray;
+    border: 2px solid;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    &__title {
+    }
+    &__color {
+        height: 10px;
+        width: 10px;
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+}

@@ -1,11 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ firstname }} {{ lastname }}{% endblock %}
+{% block title %}Profil - {{ firstname }} {{ lastname }}{% endblock %}
 
 {% block body %}
-    <div class="content-wrapper">
-        <h1>
-            Hallo, <span {{ react_component('InlineInput', { 'fieldTitle': 'Vorname', 'fieldName':  'firstname', 'fieldValue': firstname}) }}>Vorname</span> <span {{ react_component('InlineInput', { 'fieldTitle': 'Nachname', 'fieldName':  'lastname', 'fieldValue': lastname}) }}>Nachname</span>
-        </h1>
+    <div class="content-wrapper profile">
+        <form action="#" method="post">
+            <div class="profile__head">
+                <h1 class="profile__head__title">
+                    Hallo, <span {{ react_component('InlineInput', { 'fieldTitle': 'Vorname', 'fieldName':  'user[firstname]', 'fieldValue': firstname}) }}>Vorname</span> <span {{ react_component('InlineInput', { 'fieldTitle': 'Nachname', 'fieldName':  'user[lastname]', 'fieldValue': lastname}) }}>Nachname</span>
+                </h1>
+                <div class="profile__head__status" {{ react_component('MemberStatus', { 'title': status.getTitle, 'color': status.getColor }) }}>
+
+                </div>
+            </div>
+            <button class="save-button" type="submit">
+                <i class="fa-solid fa-floppy-disk"></i>
+            </button>
+        </form>
     </div>
 {% endblock %}
