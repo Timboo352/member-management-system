@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Übersicht - Mitglieder{% endblock %}
+
+{% block emoji %}🛠️{% endblock%}
+
+{% block body %}
+    <div class="content-wrapper overview overview--members">
+        <nav class="overview__nav">
+            <ul class="overview__nav__list">
+                <li class="overview__nav__item overview__nav__item--active">
+                    <a href="{{ path("app_admin_overview_members") }}" class="nav-item">Members</a>
+                </li>
+                <li class="overview__nav__item">
+                    <a href="#" class="nav-item">Rollen</a>
+                </li>
+            </ul>
+        </nav>
+        <h1>
+            Members
+        </h1>
+        {% for member in members %}
+            <div {{ react_component('MemberPreview', { 'firstName': member.getFirstname, 'lastName': member.getLastname, 'nickname': member.getNickname, 'path': path("app_admin_detail_member", ['id': ]) }) }}>
+                {{ member.getNickname }}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

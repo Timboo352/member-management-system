@@ -211,6 +211,7 @@ h1 {
 .content-wrapper {
   background-color: #111214;
   width: calc(100% - 30px);
+  max-height: calc(100% - 30px);
   max-width: 900px;
   position: absolute;
   left: 50%;
@@ -218,6 +219,7 @@ h1 {
   transform: translateX(-50%) translateY(-50%);
   padding: 50px 50px;
   border-radius: 30px;
+  overflow-y: scroll;
 }
 
 .ra-button {
@@ -252,6 +254,11 @@ h1 {
   opacity: 0.9;
 }
 
+@media only screen and (min-width: 992px) {
+  .content-wrapper {
+    max-height: calc(100% - 300px);
+  }
+}
 .inline-input {
   border: 0;
   background: transparent;
@@ -335,6 +342,54 @@ h1 {
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
+}
+
+.overview {
+  border-top-left-radius: 10px;
+  padding-top: 90px;
+}
+.overview__nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: #23272A;
+}
+.overview__nav:after {
+  content: " ";
+  background-color: #111214;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  outline: 10px solid #23272A;
+  transform: translateY(100%);
+  border-radius: 10px;
+}
+.overview__nav__list {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  margin: 0;
+}
+.overview__nav__item {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  transition: 100ms ease;
+  background-color: rgba(17, 18, 20, 0.4);
+}
+.overview__nav__item .nav-item {
+  display: block;
+  padding: 8px 15px;
+  color: #FFF;
+  text-decoration: none;
+}
+.overview__nav__item:hover {
+  background-color: rgba(17, 18, 20, 0.7);
+}
+.overview__nav__item--active, .overview__nav__item--active:hover {
+  background-color: #111214;
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -2,6 +2,8 @@
 
 {% block title %}Log in!{% endblock %}
 
+{% block emoji %}👋{% endblock%}
+
 {% block body %}
     <div class="content-wrapper login">
         <form method="post">
@@ -11,7 +13,7 @@
 
             {% if app.user %}
                 <div class="mb-3">
-                    You are logged in as <a href="{{ path('app_profile') }}">{{ app.user.member.firstname }} {{ app.user.member.lastname }}</a>, <a href="{{ path('app_logout') }}">Logout</a>
+                    {{ app.user.member.firstname }} {{ app.user.member.lastname }}: <a href="{{ path('app_logout') }}">Logout</a>
                 </div>
             {% endif %}
 
