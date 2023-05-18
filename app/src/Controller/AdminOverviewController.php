@@ -12,7 +12,7 @@ class AdminOverviewController extends AbstractController
 {
 
     #[Route('/admin/overview/members', name: 'app_admin_overview_members')]
-    public function index(EntityManagerInterface $entityManager): Response
+    public function members(EntityManagerInterface $entityManager): Response
     {
         $repository = $entityManager->getRepository(Member::class);
 

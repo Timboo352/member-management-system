@@ -16,11 +16,11 @@
                 </li>
             </ul>
         </nav>
-        <h1>
+        <h1 class="mb-4">
             Members
         </h1>
         {% for member in members %}
-            <div {{ react_component('MemberPreview', { 'firstName': member.getFirstname, 'lastName': member.getLastname, 'nickname': member.getNickname, 'path': path("app_admin_detail_member", ['id': ]) }) }}>
+            <div {{ react_component('MemberPreview', { 'firstName': member.getFirstname, 'lastName': member.getLastname, 'nickname': member.getNickname, 'roleName': member.status.getTitle, 'roleColor': member.status.getColor, 'path': path("app_admin_detail_member", {'memberId': member.getId}) }) }}>
                 {{ member.getNickname }}
             </div>
         {% endfor %}
