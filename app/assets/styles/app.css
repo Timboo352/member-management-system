@@ -418,6 +418,10 @@ h2 {
   justify-content: space-between;
   margin-top: 30px;
 }
+.profile__footer__right {
+  display: flex;
+  gap: 16px;
+}
 
 .overview {
   border-top-left-radius: 10px;

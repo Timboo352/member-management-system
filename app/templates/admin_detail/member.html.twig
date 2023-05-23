@@ -38,6 +38,9 @@
                     </button>
                 </div>
                 <div class="profile__footer__right">
+                    <a href="{{ path('app_admin_member_delete', {'memberId': id}) }}" class="ra-button ra-button--icon ra-button--red">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
                     <a href="{{ path('app_admin_overview_members') }}" class="ra-button ra-button--icon ra-button--red">
                         <i class="fa-solid fa-arrow-left"></i>
                     </a>

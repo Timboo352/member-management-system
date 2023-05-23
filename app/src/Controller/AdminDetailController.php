@@ -107,6 +107,7 @@ class AdminDetailController extends AbstractController
         return $this->render('admin_detail/role.html.twig', [
             'title' => $role->getTitle(),
             'color' => $role->getColor(),
+            'id' => $role->getId(),
         ]);
     }
 }

@@ -22,6 +22,9 @@
                     </button>
                 </div>
                 <div class="profile__footer__right">
+                    <a href="{{ path('app_admin_status_delete', {'statusId': id}) }}" class="ra-button ra-button--icon ra-button--red">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
                     <a href="{{ path('app_admin_overview_roles') }}" class="ra-button ra-button--icon ra-button--red">
                         <i class="fa-solid fa-arrow-left"></i>
                     </a>
