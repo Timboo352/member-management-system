@@ -77,6 +77,7 @@ class AdminDetailController extends AbstractController
             'address' => $member->getAddress(),
             'phone' => $member->getPhone(),
             'status' => $member->getStatus(),
+            'id' => $member->getID(),
             'allStatus' => $parsedStatus,
         ]);
     }
