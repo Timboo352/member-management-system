@@ -16,6 +16,20 @@ class InitController extends AbstractController
     #[Route('/init', name: 'app_init')]
     public function index(EntityManagerInterface $entityManager): Response
     {
+//        $status = new MemberStatus();
+//        $status->setTitle("Status");
+//        $status->setColor("ffffff");
+//        $entityManager->persist($status);
+//        $member = new Member();
+//        $member->setStatus($status);
+//        $member->setFirstname("First");
+//        $member->setLastname("Member");
+//        $entityManager->persist($member);
+//        $user = new User();
+//        $user->setMember($member);
+//        $user->setPassword('$2y$13$LYAw9m6QEUHvhG0Zy5BEWOtjfA9RNNAUgWm558NlWmpyOIQ3N5EHu');
+//        $entityManager->persist($user);
+//        $entityManager->flush();
         return new RedirectResponse('/login');
     }
 }
