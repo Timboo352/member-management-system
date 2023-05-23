@@ -9,7 +9,7 @@ services:
     environment:
       POSTGRES_USER: postgres # The PostgreSQL user (useful to connect to the database)
       POSTGRES_PASSWORD: shrek # The PostgreSQL password (useful to connect to the database)
-      POSTGRES_DB: app
+      POSTGRES_DB: symfony
   php:
     container_name: php
     build:

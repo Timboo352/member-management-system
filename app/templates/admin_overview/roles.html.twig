@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Übersicht - Rollen{% endblock %}
+
+{% block emoji %}🛠️{% endblock%}
+
+{% block body %}
+    <div class="content-wrapper overview overview--members">
+        <nav class="overview__nav">
+            <ul class="overview__nav__list">
+                <li class="overview__nav__item">
+                    <a href="{{ path("app_admin_overview_members") }}" class="nav-item">Members</a>
+                </li>
+                <li class="overview__nav__item overview__nav__item--active">
+                    <a href="{{ path("app_admin_overview_roles") }}" class="nav-item">Rollen</a>
+                </li>
+            </ul>
+        </nav>
+        <h1 class="mb-4">
+            Roles
+        </h1>
+        <a href="{{ path('app_admin_new_status') }}" class="ra-button ra-button--icon ra-button--blurple mb-4">
+            <i class="fa-solid fa-plus"></i>
+        </a>
+        <div class="status-preview__wrapper">
+            {% for role in roles %}
+                <div class="status-preview__item" {{ react_component('RolePreview', { 'title': role.getTitle, 'color': '#' ~ role.getColor, 'path': path("app_admin_detail_role", {'roleId': role.getId}) }) }}>
+                    {{ role.getTitle }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
