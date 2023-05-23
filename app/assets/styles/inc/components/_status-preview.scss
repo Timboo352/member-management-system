@@ -1,0 +1,30 @@
+.status-preview {
+    padding: 11px 13px;
+    background-color: $gray;
+    border: 2px solid;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: 100ms ease;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-bottom: 16px;
+    &:hover {
+        opacity: 0.8;
+    }
+    &__wrapper {
+        padding-left: -8px;
+        padding-right: -8px;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    &__item {
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+    &__link {
+        color: $white;
+        text-decoration: none;
+    }
+}

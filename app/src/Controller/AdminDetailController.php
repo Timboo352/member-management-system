@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminDetailController extends AbstractController
 {
-    #[Route('/admin/detail/{memberId}', name: 'app_admin_detail_member')]
+    #[Route('/admin/detail/member/{memberId}', name: 'app_admin_detail_member')]
     public function members($memberId, EntityManagerInterface $entityManager): Response
     {
         $member = $entityManager->getRepository(Member::class)->find($memberId);
@@ -77,7 +77,36 @@ class AdminDetailController extends AbstractController
             'address' => $member->getAddress(),
             'phone' => $member->getPhone(),
             'status' => $member->getStatus(),
+            'id' => $member->getID(),
             'allStatus' => $parsedStatus,
+        ]);
+    }
+    #[Route('/admin/detail/role/{roleId}', name: 'app_admin_detail_role')]
+    public function roles($roleId, EntityManagerInterface $entityManager): Response
+    {
+        $role = $entityManager->getRepository(MemberStatus::class)->find($roleId);
+
+        if(isset($_POST['status'])) {
+            $F = [];
+            foreach ($_POST['status'] as $k => $v) {
+                if(strlen($v)) {
+                    $F[$k] = $v;
+                }
+                if(isset($F['title'])) {
+                    $role->setTitle($F['title']);
+                }
+                if(isset($F['color'])) {
+                    $color = $F['color'];
+                    $color = str_replace('#', '', $color);
+                    $role->setColor($color);
+                }
+            }
+            $entityManager->flush();
+        }
+
+        return $this->render('admin_detail/role.html.twig', [
+            'title' => $role->getTitle(),
+            'color' => $role->getColor(),
         ]);
     }
 }

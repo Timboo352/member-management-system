@@ -12,7 +12,7 @@
                     <a href="{{ path("app_admin_overview_members") }}" class="nav-item">Members</a>
                 </li>
                 <li class="overview__nav__item">
-                    <a href="#" class="nav-item">Rollen</a>
+                    <a href="{{ path("app_admin_overview_roles") }}" class="nav-item">Status</a>
                 </li>
             </ul>
         </nav>
@@ -20,7 +20,7 @@
             Members
         </h1>
         <a href="{{ path('app_admin_new_member') }}" class="ra-button ra-button--icon ra-button--blurple mb-4">
-            <i class="fa-solid fa-user-plus"></i>
+            <i class="fa-solid fa-plus"></i>
         </a>
         {% for member in members %}
             <div {{ react_component('MemberPreview', { 'firstName': member.getFirstname, 'lastName': member.getLastname, 'nickname': member.getNickname, 'roleName': member.status.getTitle, 'roleColor': member.status.getColor, 'path': path("app_admin_detail_member", {'memberId': member.getId}) }) }}>
