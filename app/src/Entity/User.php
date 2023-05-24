@@ -16,7 +16,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne]
+//    #[ORM\OneToOne]
+    #[ORM\OneToOne(inversedBy: 'authUser', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Member $member = null;
 
@@ -95,5 +96,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function needsRehash(PasswordAuthenticatedUserInterface $user): bool
     {
         // TODO: Implement needsRehash() method.
+    }
+
+    public function getTest(): ?Test
+    {
+        return $this->test;
+    }
+
+    public function setTest(?Test $test): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($test === null && $this->test !== null) {
+            $this->test->setAuthUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($test !== null && $test->getAuthUser() !== $this) {
+            $test->setAuthUser($this);
+        }
+
+        $this->test = $test;
+
+        return $this;
     }
 }
