@@ -28,7 +28,7 @@
                     <div class="col-12 mb-3" {{ react_component('FormInput', { 'fieldTitle': 'Telefon', 'fieldName':  'user[phone]', 'fieldValue': phone}) }}></div>
                     <div class="col-4 col-lg-2 mb-3" {{ react_component('FormInput', { 'fieldTitle': 'PLZ', 'fieldName':  'user[plz]', 'fieldValue': plz}) }}></div>
                     <div class="col-8 col-lg-4 mb-3" {{ react_component('FormInput', { 'fieldTitle': 'Ort', 'fieldName':  'user[city]', 'fieldValue': city}) }}></div>
-                    <div class="col-12 col-lg-6 mb-3" {{ react_component('FormInput', { 'fieldTitle': 'Addresse', 'fieldName':  'user[address]', 'fieldValue': address}) }}></div>
+                    <div class="col-12 col-lg-6 mb-3" {{ react_component('FormInput', { 'fieldTitle': 'Adresse', 'fieldName':  'user[address]', 'fieldValue': address}) }}></div>
                 </div>
             </div>
             <div class="profile__footer">
@@ -36,6 +36,13 @@
                     <button class="ra-button ra-button--icon ra-button--blurple" type="submit">
                         <i class="fa-solid fa-floppy-disk"></i>
                     </button>
+                    {% if createUserButton %}
+                        <a href="#" class="ra-button ra-button--blurple">
+                            <span class="ra-button__text">
+                                Login erstellen
+                            </span>
+                        </a>
+                    {% endif %}
                 </div>
                 <div class="profile__footer__right">
                     <a href="{{ path('app_admin_member_delete', {'memberId': id}) }}" class="ra-button ra-button--icon ra-button--red">

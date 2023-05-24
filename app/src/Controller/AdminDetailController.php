@@ -67,6 +67,11 @@ class AdminDetailController extends AbstractController
             $entityManager->flush();
         }
 
+        $userCreatable = true;
+        if($member->getAuthUser() && $member->getAuthUser() != null) {
+            $userCreatable = false;
+        }
+
         return $this->render('admin_detail/member.html.twig', [
             'firstname' => $member->getFirstname(),
             'nickname' => $member->getNickname(),
@@ -79,6 +84,7 @@ class AdminDetailController extends AbstractController
             'status' => $member->getStatus(),
             'id' => $member->getID(),
             'allStatus' => $parsedStatus,
+            'createUserButton' => $userCreatable,
         ]);
     }
     #[Route('/admin/detail/role/{roleId}', name: 'app_admin_detail_role')]
