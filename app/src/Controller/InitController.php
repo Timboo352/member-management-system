@@ -28,7 +28,12 @@ class InitController extends AbstractController
 //        $user = new User();
 //        $user->setMember($member);
 //        $user->setPassword('$2y$13$LYAw9m6QEUHvhG0Zy5BEWOtjfA9RNNAUgWm558NlWmpyOIQ3N5EHu');
+//        $user->setRole('ROLE_ADMIN');
 //        $entityManager->persist($user);
+//        $entityManager->flush();
+//        $member = $entityManager->getRepository(Member::class)->find([id]);
+//        $user = $entityManager->getRepository(User::class)->find([id]);
+//        $member->setAuthUser($user);
 //        $entityManager->flush();
         return new RedirectResponse('/login');
     }

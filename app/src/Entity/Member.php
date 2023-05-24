@@ -17,6 +17,10 @@ class Member
     #[ORM\JoinColumn(nullable: false)]
     private ?MemberStatus $status = null;
 
+    #[ORM\OneToOne(inversedBy: 'member', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?User $authUser = null;
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $firstname = null;
 
@@ -54,6 +58,18 @@ class Member
     public function setStatus(?MemberStatus $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getAuthUser(): ?User
+    {
+        return $this->authUser;
+    }
+
+    public function setAuthUser(?User $authUser): self
+    {
+        $this->authUser = $authUser;
 
         return $this;
     }
@@ -152,20 +168,5 @@ class Member
         $this->address = $address;
 
         return $this;
-    }
-
-    public function getRoles(): array
-    {
-        // TODO: Implement getRoles() method.
-    }
-
-    public function eraseCredentials()
-    {
-        // TODO: Implement eraseCredentials() method.
-    }
-
-    public function getUserIdentifier(): string
-    {
-        // TODO: Implement getUserIdentifier() method.
     }
 }
