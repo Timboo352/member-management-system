@@ -37,7 +37,7 @@
                         <i class="fa-solid fa-floppy-disk"></i>
                     </button>
                     {% if createUserButton %}
-                        <a href="#" class="ra-button ra-button--blurple">
+                        <a href="{{ path('app_admin_new_user', {'userMemberId': id}) }}" class="ra-button ra-button--blurple">
                             <span class="ra-button__text">
                                 Login erstellen
                             </span>

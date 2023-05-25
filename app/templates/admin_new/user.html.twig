@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Benutzerkonto erstellt{% endblock %}
+
+{% block emoji %}🔐{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper profile">
+        <h1>
+            Login-Daten für den Benutzer
+        </h1>
+        <p>
+            Teile {{ firstname }} {{ lastname }} diese Login-Daten auf dem möglichst sichersten Weg mit.<br>
+            E-Mail bietet sich dafür gut an: <a href="mailto:{{ mail }}">{{ mail }}</a><br>
+        </p>
+        <p>
+            Benutzer-Id: {{ userId }}<br>
+            Passwort: {{ password }}
+        </p>
+        <p>
+            Lege dem Benutzer nahe, das Passwort direkt ab zu ändern.
+        </p>
+        <a href="{{ path('app_admin_overview_members') }}" class="ra-button ra-button--icon ra-button--red">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+    </div>
+{% endblock %}

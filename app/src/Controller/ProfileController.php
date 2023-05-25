@@ -5,6 +5,7 @@ namespace App\Controller;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProfileController extends AbstractController
@@ -57,6 +58,52 @@ class ProfileController extends AbstractController
             'address' => $member->getAddress(),
             'phone' => $member->getPhone(),
             'status' => $member->getStatus(),
+        ]);
+    }
+
+    #[Route('/profile/change-password', name: 'app_profile_password')]
+    public function password(EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
+    {
+        $user = $this->getUser();
+        $errors = [];
+        if (isset($_POST['password']) && isset($_POST['passwordRepeat'])) {
+            $newPw = strip_tags($_POST['password']);
+            $repeatPw = strip_tags($_POST['passwordRepeat']);
+            if($newPw != $repeatPw) {
+                $errors[] = 'Die Passwörter sind nicht identisch';
+            }
+            if(strlen($newPw) < 8) {
+                $errors[] = 'Das Passwort muss mindestens 8 Zeichen haben.';
+            }
+            if (!preg_match('/[_!?$+\-@&=%#\*\(\)\[\]]/', $newPw))
+            {
+                $errors[] = 'Das Passwort muss mindestens 1 Sonderzeichen enthalten';
+            }
+            if (!preg_match('/\d/', $newPw)) {
+                $errors[] = 'Das Passwort muss mindestens 1 Zahl enthalten';
+            }
+            if (!preg_match('/[A-Z]/', $newPw))
+            {
+                $errors[] = 'Das Passwort muss mindestens 1 grossen Buchstaben enthalten';
+            }
+            if (!preg_match('/[a-z]/', $newPw))
+            {
+                $errors[] = 'Das Passwort muss mindestens 1 kleinen Buchstaben enthalten';
+            }
+
+            if(!count($errors)) {
+                try {
+                    $hashedPassword = $passwordHasher->hashPassword($user, $newPw);
+                    $user->setPassword($hashedPassword);
+                    $entityManager->flush();
+                } catch (\Exception $e) {
+                    return new Response('<h1>Something\'s wrong, I can feel it!</h1>' . '<p>Fehler: ' . $e . '</p>');
+                }
+                return $this->redirectToRoute('app_logout');
+            }
+        }
+        return $this->render('user/password.html.twig', [
+            'errors' => $errors,
         ]);
     }
 }
