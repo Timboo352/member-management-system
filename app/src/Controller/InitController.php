@@ -16,24 +16,27 @@ class InitController extends AbstractController
     #[Route('/init', name: 'app_init')]
     public function index(EntityManagerInterface $entityManager): Response
     {
-//        $status = new MemberStatus();
-//        $status->setTitle("Status");
-//        $status->setColor("ffffff");
-//        $entityManager->persist($status);
-//        $member = new Member();
-//        $member->setStatus($status);
-//        $member->setFirstname("First");
-//        $member->setLastname("Member");
-//        $entityManager->persist($member);
-//        $user = new User();
-//        $user->setMember($member);
-//        $user->setPassword('$2y$13$LYAw9m6QEUHvhG0Zy5BEWOtjfA9RNNAUgWm558NlWmpyOIQ3N5EHu');
-//        $user->setRole('ROLE_ADMIN');
-//        $entityManager->persist($user);
-//        $member = $entityManager->getRepository(Member::class)->find(11);
-//        $user = $entityManager->getRepository(User::class)->find(3);
-//        $member->setAuthUser($user);
-//        $entityManager->flush();
+        $status = new MemberStatus();
+        $member = new Member();
+        $user = new User();
+
+        $status->setTitle("Status");
+        $status->setColor("ffffff");
+
+        $member->setStatus($status);
+        $member->setFirstname("First");
+        $member->setLastname("Member");
+        $member->setAuthUser($user);
+
+        $user->setMember($member);
+        $user->setPassword('$2y$13$LYAw9m6QEUHvhG0Zy5BEWOtjfA9RNNAUgWm558NlWmpyOIQ3N5EHu');
+        $user->setRole('ROLE_ADMIN');
+
+
+        $entityManager->persist($status);
+        $entityManager->persist($user);
+        $entityManager->persist($member);
+        $entityManager->flush();
         return new RedirectResponse('/login');
     }
 }
