@@ -18,7 +18,7 @@ class AdminNewController extends AbstractController
     public function member(EntityManagerInterface $entityManager): Response
     {
         $member = new Member();
-        $member->setStatus($entityManager->getRepository(MemberStatus::class)->find(7));
+        $member->setStatus($entityManager->getRepository(MemberStatus::class)->find(1));
         $member->setFirstname("New");
         $member->setLastname("Member");
 

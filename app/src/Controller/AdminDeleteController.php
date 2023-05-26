@@ -28,7 +28,7 @@ class AdminDeleteController extends AbstractController
     #[Route('/admin/status/delete/{statusId}', name: 'app_admin_status_delete')]
     public function status($statusId, EntityManagerInterface $entityManager): Response
     {
-        if($statusId == 2) {
+        if($statusId == 1) {
             return $this->redirectToRoute('app_admin_detail_role', ['roleId' => $statusId]);
         }
         $delete = $entityManager->getRepository(MemberStatus::class)->find($statusId);
